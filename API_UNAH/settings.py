@@ -63,7 +63,7 @@ MIDDLEWARE = [
 
 
 CORS_ALLOWED_ORIGINS = [
-    '*',
+    "*",
 ]
 
 
