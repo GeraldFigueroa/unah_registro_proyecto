@@ -6,7 +6,8 @@ class Estudiante(models.Model):
     #cod_carrera = models.ForeignKey(Carrera, on_delete=models.CASCADE, related_name='carrera_principal')
     cod_carrera = models.CharField(max_length=5)
     correo_personal = models.CharField(max_length=100)
-    cod_centro = models.ForeignKey(CentroRegional, on_delete=models.CASCADE, related_name='admision_cod_centro')
+    #cod_centro = models.ForeignKey(CentroRegional, on_delete=models.CASCADE, related_name='admision_cod_centro')
+    cod_centro = models.CharField(max_length=5)
     
     correo_institucional = models.CharField(max_length=100)
     num_cuenta = models.CharField(max_length=100)
