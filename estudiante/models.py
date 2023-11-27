@@ -4,9 +4,9 @@ from registro.models import Carrera, CentroRegional
 class Estudiante(models.Model):
     nombre = models.CharField(max_length=150)
     identidad = models.CharField(max_length=20, unique=True)
-    carrera = models.ForeignKey(Carrera, on_delete=models.CASCADE, related_name='carrera_estudiante')
+    carrera = models.ForeignKey(Carrera, on_delete=models.CASCADE, related_name='carrera_estudiante', to_field='cod_carrera')
     correo_personal = models.CharField(max_length=100)
-    centro = models.ForeignKey(CentroRegional, on_delete=models.CASCADE, related_name='centro_estudiante')
+    centro = models.ForeignKey(CentroRegional, on_delete=models.CASCADE, related_name='centro_estudiante', to_field='cod_centro')
     
     num_cuenta = models.CharField(max_length=100, default='', unique=True)
     correo_institucional = models.CharField(max_length=100, default='')
