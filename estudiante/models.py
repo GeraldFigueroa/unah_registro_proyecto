@@ -24,3 +24,5 @@ class Solicitud(models.Model):
     tipoSolicitud = models.ForeignKey(TipoSolicitud, on_delete=models.CASCADE, related_name='tipo_solicitud')
     descripcion = models.TextField()
     estudiante = models.ForeignKey(Estudiante, on_delete=models.CASCADE, related_name='solicitud_estudiante', to_field='num_cuenta')
+
+    
