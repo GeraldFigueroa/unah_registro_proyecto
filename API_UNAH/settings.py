@@ -25,7 +25,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-$bmy6s496#6pdv3vzjzvpkuw0potd#mcw0oevvg_0ms_(b7p-u'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = []
 
@@ -94,11 +94,20 @@ WSGI_APPLICATION = 'API_UNAH.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
+#DATABASES = {
+#    'default': dj_database_url.config(
+#        default='sqlite:///db.sqlite3',
+#        conn_max_age=600
+#    )
+#}
 DATABASES = {
-    'default': dj_database_url.config(
-        default='sqlite:///db.sqlite3',
-        conn_max_age=600
-    )
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'unah',
+        'USER': 'postgres',
+        'PASSWORD': 'postgres',
+        'HOST': 'localhost',  # Puedes cambiar esto según la configuración de tu base de datos local
+    }
 }
 
 

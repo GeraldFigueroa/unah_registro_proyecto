@@ -38,6 +38,7 @@ def crear_requerimiento(request):
 @api_view(['POST'])
 def crear_calificacion(request):
     if request.method == 'POST':
+        print(request.data)
         serializer = CalificacionSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
@@ -83,8 +84,10 @@ def obtener_resultados(request, id):
 
 
     return Response({
-        f'{admision.cod_carrera1.nombre_carrera}': resultado_carrera1,
-        f'{admision.cod_carrera2.nombre_carrera}': resultado_carrera2
+        'carrera1': admision.cod_carrera1.nombre_carrera,
+        'nota1': resultado_carrera1,
+        'carrera2': admision.cod_carrera2.nombre_carrera,
+        'nota2': resultado_carrera2
     }, status=status.HTTP_201_CREATED)
 
 

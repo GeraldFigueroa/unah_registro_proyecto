@@ -27,14 +27,15 @@ def listar_estudiantes(request):
 @api_view(['POST'])
 def login_estudiante(request):
     if request.method == 'POST':
-        num_cuenta = request.data.get('num_cuenta', '')
-        password = request.data.get('password', '')
+        num_cuenta = request.data.get('num_cuenta')
+        print("NUMERO:", num_cuenta)
+        password = request.data.get('password')
         try:
             # Buscar el estudiante en la base de datos
             estudiante = Estudiante.objects.get(num_cuenta=num_cuenta)
         except Estudiante.DoesNotExist:
             # El estudiante no existe
-            return Response({'mensaje': 'Error de autenticación'}, status=status.HTTP_401_UNAUTHORIZED)
+            return Response({'mensaje': 'El estudiante no existe'}, status=status.HTTP_401_UNAUTHORIZED)
 
         # Verificar la contraseña manualmente
         if estudiante.password == password:
@@ -70,9 +71,9 @@ def recuperacion_clave(request, num_cuenta):
 @api_view(['POST'])
 def cambiar_clave(request):
     if request.method == 'POST':
-        num_cuenta = request.data.get('num_cuenta', '')
-        password = request.data.get('password', '')
-        new_password = request.data.get('new_password', '')
+        num_cuenta = request.data.get('num_cuenta')
+        password = request.data.get('password')
+        new_password = request.data.get('new_password')
         try:
             # Buscar el estudiante en la base de datos
             estudiante = Estudiante.objects.get(num_cuenta=num_cuenta)
